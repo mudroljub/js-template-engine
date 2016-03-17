@@ -11,11 +11,15 @@ let recnik = {
 let tabela = `
 <p>Zdravo, moje ime je ${recnik.ime}</p>
 <div>
-  Životi: ${recnik.zivoti}
-  Poeni: ${recnik.poeni}
-  Energija: ${recnik.energija}
+  Životi: ${recnik.zivoti}<br>
+  Poeni: ${recnik.poeni}<br>
+  Energija: ${recnik.energija}<br>
   ${recnik.poeni} je ${ (recnik.poeni % 2 === 0 ? "par" : "nepar") }
 </div>
 `
 
-console.log(tabela);
+// var element = document.createElement('div');
+// element.innerHTML = tabela;
+// document.body.appendChild(element);
+
+document.body.innerHTML += tabela;
