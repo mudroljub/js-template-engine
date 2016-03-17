@@ -1,0 +1,15 @@
+{
+  "name": "webpack-es6-loader",
+  "version": "0.0.0",
+  "description": "A tutorial on using ES6 modules with Webpack.",
+  "main": "main.js",
+  "scripts": {
+    "watch": "live-server & webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-loader": "^5.0.0"
+  },
+  "author": "mudroljub",
+  "license": "BSD"
+}
