@@ -1,57 +1,48 @@
 'use strict';
 /*
   moze da prevodi sablone iz html-a i iz js-a
-  kada vuce iz htmla, mora negde sacuvati izvornu verziju, da bi mogao da je evaluira svaki put
-  kad prevodi iz js-a, mora svaki put pripisivati varijablu kako bi je azurirao (nece sa eval kao iz htmla; mozda da je vraca iz funkcije?)
+  kada vuce iz htmla, ucitava sablon, mora negde sacuvati izvornu verziju, da bi mogao evaluirati svaki put
+  kad prevodi iz js-a, kreira sablon, mora svaki put vracati sablon iz funkcije
 */
 
-let recnik = {
+/*** KONFIG ***/
+
+var tabela;
+var tabela2;
+var tabelaSablonHTML;
+
+var tabelaSablonJS = function() {
+  return `
+  <h3>Tabela</h2>
+  <div>
+    Životi: ${statistike.zivoti}<br>
+    Poeni: ${statistike.poeni}<br>
+    Energija: ${statistike.energija}<br>
+    ${statistike.poeni} je ${ (statistike.poeni % 2 === 0 ? "par" : "nepar") }
+  </div>`
+} // tabelaSablonJS
+
+let statistike = {
   ime: 'Daman',
   zivoti: 2,
   poeni: 222,
   energija: 100
 }
 
-var tabela;
-var tabela2;
-var tabelaSablon2;
-
-function tabelaSablon3() {
-  return `
-  <h3>Tabela</h2>
-  <div>
-    Životi: ${recnik.zivoti}<br>
-    Poeni: ${recnik.poeni}<br>
-    Energija: ${recnik.energija}<br>
-    ${recnik.poeni} je ${ (recnik.poeni % 2 === 0 ? "par" : "nepar") }
-  </div>
-  `
-}
+/*** LOGIKA ***/
 
 window.onload = function init() {
   tabela = document.createElement('div');
   document.body.appendChild(tabela);
   tabela2 = document.getElementById('tabela2')
-  tabelaSablon2 = tabela2.innerHTML;
+  tabelaSablonHTML = tabela2.innerHTML;
 } // init
 
 
 function update() {
-  recnik.energija++
-
-  let tabelaSablon = `
-  <h3>Tabela</h2>
-  <div>
-    Životi: ${recnik.zivoti}<br>
-    Poeni: ${recnik.poeni}<br>
-    Energija: ${recnik.energija}<br>
-    ${recnik.poeni} je ${ (recnik.poeni % 2 === 0 ? "par" : "nepar") }
-  </div>
-  `
-  tabela.innerHTML = tabelaSablon;
-
-  let parsirano2 = eval('`' + tabelaSablon2 + '`');
-  tabela2.innerHTML = parsirano2;
+  statistike.energija++
+  tabela.innerHTML = tabelaSablonJS();
+  tabela2.innerHTML = eval('`' + tabelaSablonHTML + '`'); // mora evaluirati
 } // update
 
 
