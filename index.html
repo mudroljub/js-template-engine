@@ -4,11 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Template engine</title>
+  <script src="bundle.js"></script>
 </head>
 
 <body>
+  <div id="tabela2">
+    <h3>Tabela 2</h2>
+    Životi: ${recnik.zivoti}<br>
+    Poeni: ${recnik.poeni}<br>
+    Energija: ${recnik.energija}<br>
+    ${recnik.poeni} je ${ (recnik.poeni % 2 === 0 ? "par" : "nepar") }
+  </div>
 
-  <script src="bundle.js"></script>
+  <br>
+
 </body>
 
 </html>
