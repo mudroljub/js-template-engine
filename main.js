@@ -3,7 +3,7 @@
   kada vuce iz htmla: ucitava sadrzaj, cuva izvornu verziju, i evaluira svaki put
   kad prevodi iz js-a: pravi sablon, koji mora vracati iz funkcije
 
-  problem: kad zadatak nije definisan
+  problem: kad zadatak nije definisan puca sve (ako je prazan sve kul)
   razmisliti da ipak sve bude u posebnim html stranicama?
 */
 
