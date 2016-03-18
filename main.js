@@ -9,11 +9,11 @@
 
 /*** KONFIG ***/
 
+// dodati sceni
 var naslov = "Bitka za Krupanj";
 var zadatak = "Dovedi Žikicu do nemačkog bunkera.";
 var tabela;
 var zaglavlje;
-var zaglavljeSadrzaj;
 
 let statistike = {
   ime: 'Daman',
@@ -22,7 +22,7 @@ let statistike = {
   energija: 100
 }
 
-function napraviSablon(statistike) {
+function praviTabelu(statistike) {
   return `
   <h3>Tabela</h2>
   <div>
@@ -31,14 +31,16 @@ function napraviSablon(statistike) {
     Energija: ${statistike.energija}<br>
     ${statistike.poeni} je ${ (statistike.poeni % 2 === 0 ? "par" : "nepar") }
   </div>`
-} // napraviSablon
+} // praviTabelu
 
 
 /*** LOGIKA ***/
 
-window.onload = function init() {
-  zaglavlje = document.getElementById('zaglavlje')
-  zaglavljeSadrzaj = zaglavlje.innerHTML;
+window.onload = init;
+
+function init() {
+  zaglavlje = document.getElementById('zaglavlje');
+  zaglavlje.innerHTML = eval('`' + zaglavlje.innerHTML + '`'); // mora da evaluira
   tabela = document.getElementById('tabela') || document.createElement('div');
   document.body.appendChild(tabela);
 } // init
@@ -46,8 +48,7 @@ window.onload = function init() {
 
 function update() {
   statistike.energija++
-  zaglavlje.innerHTML = eval('`' + zaglavljeSadrzaj + '`'); // mora da evaluira
-  tabela.innerHTML = napraviSablon(statistike);
+  tabela.innerHTML = praviTabelu(statistike);
 } // update
 
 
