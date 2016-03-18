@@ -8,15 +8,14 @@
 </head>
 
 <body>
-  <div id="tabela2">
-    <h3>Tabela 2 (iz HTML-a)</h2>
-    Životi: ${statistike.zivoti}<br>
-    Poeni: ${statistike.poeni}<br>
-    Energija: ${statistike.energija}<br>
-    ${statistike.poeni} je ${ (statistike.poeni % 2 === 0 ? "par" : "nepar") }
+  <div id="zaglavlje">
+    <h1>${naslov}</h1>
+    <p>${zadatak}</p>
   </div>
 
-  <br>
+  <canvas id="canvas"></canvas>
+
+  <div id="tabela"></div>
 
 </body>
 

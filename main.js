@@ -1,26 +1,19 @@
 'use strict';
 /*
-  moze da prevodi sablone iz html-a i iz js-a
-  kada vuce iz htmla, ucitava sablon, mora negde sacuvati izvornu verziju, da bi mogao evaluirati svaki put
-  kad prevodi iz js-a, kreira sablon, mora svaki put vracati sablon iz funkcije
+  kada vuce iz htmla: ucitava sadrzaj, cuva izvornu verziju, i evaluira svaki put
+  kad prevodi iz js-a: pravi sablon, koji mora vracati iz funkcije
+
+  problem: kad zadatak nije definisan
+  razmisliti da ipak sve bude u posebnim html stranicama?
 */
 
 /*** KONFIG ***/
 
+var naslov = "Bitka za Krupanj";
+var zadatak = "Dovedi Žikicu do nemačkog bunkera.";
 var tabela;
-var tabela2;
-var tabelaSablonHTML;
-
-var tabelaSablonJS = function() {
-  return `
-  <h3>Tabela</h2>
-  <div>
-    Životi: ${statistike.zivoti}<br>
-    Poeni: ${statistike.poeni}<br>
-    Energija: ${statistike.energija}<br>
-    ${statistike.poeni} je ${ (statistike.poeni % 2 === 0 ? "par" : "nepar") }
-  </div>`
-} // tabelaSablonJS
+var zaglavlje;
+var zaglavljeSadrzaj;
 
 let statistike = {
   ime: 'Daman',
@@ -29,20 +22,32 @@ let statistike = {
   energija: 100
 }
 
+function napraviSablon(statistike) {
+  return `
+  <h3>Tabela</h2>
+  <div>
+    Životi: ${statistike.zivoti}<br>
+    Poeni: ${statistike.poeni}<br>
+    Energija: ${statistike.energija}<br>
+    ${statistike.poeni} je ${ (statistike.poeni % 2 === 0 ? "par" : "nepar") }
+  </div>`
+} // napraviSablon
+
+
 /*** LOGIKA ***/
 
 window.onload = function init() {
-  tabela = document.createElement('div');
+  zaglavlje = document.getElementById('zaglavlje')
+  zaglavljeSadrzaj = zaglavlje.innerHTML;
+  tabela = document.getElementById('tabela') || document.createElement('div');
   document.body.appendChild(tabela);
-  tabela2 = document.getElementById('tabela2')
-  tabelaSablonHTML = tabela2.innerHTML;
 } // init
 
 
 function update() {
   statistike.energija++
-  tabela.innerHTML = tabelaSablonJS();
-  tabela2.innerHTML = eval('`' + tabelaSablonHTML + '`'); // mora evaluirati
+  zaglavlje.innerHTML = eval('`' + zaglavljeSadrzaj + '`'); // mora da evaluira
+  tabela.innerHTML = napraviSablon(statistike);
 } // update
 
 
