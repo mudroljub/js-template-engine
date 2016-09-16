@@ -4,11 +4,12 @@
 
 var tabela;
 
-let statistike = {
+let vrednosti = {
   ime: 'Daman',
   zivoti: 2,
   poeni: 222,
-  energija: 100
+  energija: 100,
+  tagovi: ['JavaScript', 'Node', 'Learning']
 }
 
 /*** LOGIKA ***/
@@ -20,20 +21,24 @@ window.onload = function () {
 }
 
 function update() {
-  statistike.energija++
-  tabela.innerHTML = praviTabelu(statistike);
+  vrednosti.energija++
+  tabela.innerHTML = praviTabelu(vrednosti);
 }
 
 
-/* POMOĆNE FUNKCIJE */
+/* FUNKCIJE */
 
-function praviTabelu(statistike) {
+function praviTabelu(vrednosti) {
   return `
   <h3>Tabela</h2>
   <div>
-    Životi: ${statistike.zivoti}<br>
-    Poeni: ${statistike.poeni}<br>
-    Energija: ${statistike.energija}<br>
-    ${statistike.poeni} je ${ (statistike.poeni % 2 === 0 ? "par" : "nepar") }
-  </div>`
+    Životi: ${vrednosti.zivoti}<br>
+    Poeni: ${vrednosti.poeni}<br>
+    Energija: ${vrednosti.energija}<br>
+    ${vrednosti.poeni} je ${ (vrednosti.poeni % 2 === 0 ? "par" : "nepar") }
+  </div>
+  <ul>
+    ${vrednosti.tagovi.map(tag => `<li>${tag}</li>`)}
+  </ul>
+  `
 }
