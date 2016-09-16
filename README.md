@@ -1,11 +1,7 @@
+# Native JS templating
 
-## <a name="Installation"></a>Installation ##
+Native JS templating, no dependencies.
 
-First install  [node.js](https://nodejs.org). Then install dependencies:
-* `sudo npm install -g webpack live-server`
-* `npm install`
+## Start
 
-To start a simple example:
-* `npm run watch`
-
-Now, you are ready for development. The browser will automatically update when you save.
+Just open html files in modern browser (must support ES6).
