@@ -1,4 +1,4 @@
-# Native JS templating
+# JS template engine
 
 Native JS templating, no dependencies.
 
