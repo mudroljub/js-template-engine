@@ -1,3 +1,4 @@
+// TODO: dodati primer dinamički HTML
 // prevodi iz js-a: pravi sablon, koji mora vracati iz funkcije
 
 /*** KONFIG ***/
