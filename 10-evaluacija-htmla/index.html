@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vrednosti u HTML-u</title>
+</head>
+
+<body>
+
+  <div class="${korisnik.id % 2 == 0 ? 'par' : 'nepar'}">
+    <h1>${korisnik.ime}</h1>
+    <p>${korisnik.zanimanje || ''}</p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

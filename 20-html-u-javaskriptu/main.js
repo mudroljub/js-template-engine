@@ -1,45 +1,25 @@
-// TODO: dodati primer dinamički HTML
-// prevodi iz js-a: pravi sablon, koji mora vracati iz funkcije
-
-/*** KONFIG ***/
-
-var tabela;
-
-let vrednosti = {
+const podaci = {
   ime: 'Daman',
-  zivoti: 2,
   poeni: 222,
   energija: 100,
   tagovi: ['JavaScript', 'Node', 'Learning']
 }
 
-/*** LOGIKA ***/
-
-window.onload = function () {
-  tabela = document.getElementById('tabela');
-  update()
-  setInterval(update, 1000)
-}
-
-function update() {
-  vrednosti.energija++
-  tabela.innerHTML = praviTabelu(vrednosti);
-}
-
-
-/* FUNKCIJE */
-
-function praviTabelu(vrednosti) {
+function praviSablon() {
+  const tagovi = podaci.tagovi.map(tag => `<li>${tag}</li>`)
   return `
-  <h3>Tabela</h2>
-  <div>
-    Životi: ${vrednosti.zivoti}<br>
-    Poeni: ${vrednosti.poeni}<br>
-    Energija: ${vrednosti.energija}<br>
-    ${vrednosti.poeni} je ${ (vrednosti.poeni % 2 === 0 ? "par" : "nepar") }
-  </div>
-  <ul>
-    ${vrednosti.tagovi.map(tag => `<li>${tag}</li>`)}
-  </ul>
+    <div class="${podaci.poeni > 200 ? 'stil1' : 'stil2'}">
+      <h3>Profil</h3>
+      Ime: ${podaci.ime}<br>
+      Poeni: ${podaci.poeni}<br>
+      Energija: ${podaci.energija}<br>
+      Oznake:
+      <ul>
+        ${tagovi.join(' ')}
+      </ul>
+    </div>
   `
 }
+
+window.onload = () =>
+  document.getElementById('profil').innerHTML = praviSablon()
