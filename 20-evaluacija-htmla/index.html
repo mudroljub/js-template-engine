@@ -4,13 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Vrednosti u HTML-u</title>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="${korisnik.id % 2 == 0 ? 'par' : 'nepar'}">
+
     <h1>${korisnik.ime}</h1>
-    <p>${korisnik.zanimanje || ''}</p>
+    <p>${korisnik.zanimanje}</p>
+    <p>Ključne reči: ${korisnik.oznake.join(', ')}</p>
+
   </div>
 
   <script src="main.js"></script>
