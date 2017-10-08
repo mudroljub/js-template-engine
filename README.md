@@ -4,4 +4,4 @@ Native JS templating, no dependencies.
 
 ## Start
 
-Just open html files in modern browser (must support ES6).
+`npm install` then just open html files in browser.

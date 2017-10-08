@@ -8,5 +8,8 @@
     "url": "git@github.com:mudroljub/template-engine.git"
   },
   "author": "mudroljub",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "es2015-i18n-tag": "^1.1.6"
+  }
 }
